@@ -27,6 +27,7 @@ namespace FlaUI.WebDriver
         public Application? App { get; }
         public InputState InputState { get; }
         private Dictionary<string, KnownElement> KnownElementsByElementReference { get; } = new Dictionary<string, KnownElement>();
+        private Dictionary<AutomationElement, string> ElementsByKnownElement { get; } = new();
         private Dictionary<string, KnownWindow> KnownWindowsByWindowHandle { get; } = new Dictionary<string, KnownWindow>();
         public TimeSpan ImplicitWaitTimeout => TimeSpan.FromMilliseconds(TimeoutsConfiguration.ImplicitWaitTimeoutMs);
         public TimeSpan PageLoadTimeout => TimeSpan.FromMilliseconds(TimeoutsConfiguration.PageLoadTimeoutMs);
@@ -77,18 +78,23 @@ namespace FlaUI.WebDriver
 
         public KnownElement GetOrAddKnownElement(AutomationElement element)
         {
-            KnownElement? result = null;
-            
-            try
+            var result = KnownElementsByElementReference.Values.FirstOrDefault(knownElement =>
             {
-                result = KnownElementsByElementReference.Values.FirstOrDefault(knownElement => knownElement.Element.Equals(element));
-            }
-            catch { }
+                try
+                {
+                    return knownElement.Element.Equals(element);
+                }
+                catch
+                {
+                    return false;
+                }
+            });
 
             if (result == null)
             {
                 result = new KnownElement(element);
                 KnownElementsByElementReference.Add(result.ElementReference, result);
+                ElementsByKnownElement.Add(element, result.ElementReference);
             }
             return result;
         }
