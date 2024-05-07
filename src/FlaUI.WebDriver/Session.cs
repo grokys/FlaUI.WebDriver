@@ -77,7 +77,14 @@ namespace FlaUI.WebDriver
 
         public KnownElement GetOrAddKnownElement(AutomationElement element)
         {
-            var result = KnownElementsByElementReference.Values.FirstOrDefault(knownElement => knownElement.Element.Equals(element));
+            KnownElement? result = null;
+            
+            try
+            {
+                result = KnownElementsByElementReference.Values.FirstOrDefault(knownElement => knownElement.Element.Equals(element));
+            }
+            catch { }
+
             if (result == null)
             {
                 result = new KnownElement(element);
