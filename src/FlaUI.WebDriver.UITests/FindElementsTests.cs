@@ -2,6 +2,8 @@ using FlaUI.WebDriver.UITests.TestUtil;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace FlaUI.WebDriver.UITests
@@ -225,6 +227,34 @@ namespace FlaUI.WebDriver.UITests
             Assert.That(findElements, Throws.TypeOf<NoSuchElementException>());
             var elementsInNewWindow = driver.FindElements(ExtendedBy.AccessibilityId("Window1TextBox"));
             Assert.That(elementsInNewWindow, Has.Count.EqualTo(1));
+        }
+
+        [Test]
+        public void FindElements_InOtherWindow_DoesNotSlowDown()
+        {
+            var driverOptions = FlaUIDriverOptions.TestApp();
+            using var driver = new RemoteWebDriver(WebDriverFixture.WebDriverUrl, driverOptions);
+            var mainWindowHandle = driver.CurrentWindowHandle;
+            var sw = new Stopwatch();
+
+            for (var i = 0; i < 100; i++)
+            {
+                OpenAndSwitchToAnotherWindow(driver);
+                sw.Restart();
+
+                for (var j = 0; j < 40; j++)
+                {
+                    var num = j == 0 ? string.Empty : j.ToString();
+                    var textBox = driver.FindElement(ExtendedBy.AccessibilityId("Window1TextBox" + num));
+                    Assert.That(textBox.Text, Is.EqualTo("Window1 TextBox"));
+                }
+
+                driver.Close();
+                driver.SwitchTo().Window(mainWindowHandle);
+                sw.Stop();
+
+                Console.WriteLine($"Iteration {i}: {sw.ElapsedMilliseconds}ms");
+            }
         }
 
         private static void OpenAndSwitchToAnotherWindow(RemoteWebDriver driver)

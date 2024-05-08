@@ -6,8 +6,54 @@
         xmlns:local="clr-namespace:WpfApplication"
         mc:Ignorable="d"
         Title="Window1" Height="266" Width="562">
-    <Grid HorizontalAlignment="Left" Width="541" Margin="0,0,0,-6">
-        <TextBox x:Name="Window1TextBox" HorizontalAlignment="Center" Margin="0,93,0,0" TextWrapping="Wrap" Text="Window1 TextBox" VerticalAlignment="Top" Width="120"/>
-
-    </Grid>
+  <StackPanel Orientation="Horizontal">
+    <StackPanel>
+      <TextBox x:Name="Window1TextBox" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox1" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox2" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox3" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox4" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox5" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox6" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox7" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox8" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox9" Text="Window1 TextBox"/>
+    </StackPanel>
+    <StackPanel>
+      <TextBox x:Name="Window1TextBox10" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox11" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox12" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox13" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox14" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox15" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox16" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox17" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox18" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox19" Text="Window1 TextBox"/>
+    </StackPanel>
+    <StackPanel>
+      <TextBox x:Name="Window1TextBox20" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox21" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox22" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox23" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox24" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox25" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox26" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox27" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox28" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox29" Text="Window1 TextBox"/>
+    </StackPanel>
+    <StackPanel>
+      <TextBox x:Name="Window1TextBox30" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox31" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox32" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox33" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox34" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox35" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox36" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox37" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox38" Text="Window1 TextBox"/>
+      <TextBox x:Name="Window1TextBox39" Text="Window1 TextBox"/>
+    </StackPanel>
+  </StackPanel>
 </Window>
